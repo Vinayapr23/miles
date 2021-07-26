@@ -1,10 +1,4 @@
-/*
 
-TemplateMo 550 Diagoona
-
-https://templatemo.com/tm-550-diagoona
-
-*/
 
 body {
     font-family: 'Open Sans', Arial, sans-serif;
@@ -27,7 +21,7 @@ p { line-height: 1.9; }
 .tm-logo { margin-right: 20px; }
 .tm-slogan { font-size: 0.8rem; }
 
-/* Navigation */
+
 .navbar-toggler {
     padding: 8px 15px;
     border: 0;
@@ -62,7 +56,7 @@ p { line-height: 1.9; }
     color: #9CC;
 }
 
-/* Page Background */
+
 .tm-bg {
     position: absolute;
     left: 0;
@@ -189,12 +183,8 @@ hr { border-top: 1px solid white; }
     color: #9CC;
 }
 
-/* Service */ 
-.tm-service-text { max-width: 365px; }
-.tm-service-img { margin-right: 25px; }
-.tm-service-img-r { margin-left: 25px; }
-
-/* Contact */
+.tm-sitename{ color:white;}
+.tm-sitename:hover{color:#9CC;}
 .form-control,
 textarea {    
     color: white;
@@ -210,6 +200,8 @@ textarea {
     font-weight: 400;
     line-height: 1.5;
 }
+
+.position{padding :100px}
 
 .form-control:focus {
     color: white;
