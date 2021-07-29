@@ -39,10 +39,22 @@ def create_app():
    
    @app.route("/")
    def home():
-    return render_template("index.html")
+     
+     user_id = session.get("user_id")
+
+     if user_id is None:
+        g.user = None
+     else:
+        conn = db.get_db()
+        cursor= conn.cursor()
+        cursor.execute("select * from people where id=%s",(user_id,))
+        g.user=cursor.fetchone()
+        return redirect(url_for('task.dashboard'))
+     return render_template("index.html")
    
    @app.route("/login",methods=["GET","POST"])
    def login():
+   
      if request.method == "POST":
        email=request.form.get('email')
        password=request.form.get('password')
@@ -51,16 +63,20 @@ def create_app():
        cursor= conn.cursor()
        cursor.execute("select password,email,id from people where email=%s",(email,))
        data = cursor.fetchone()
-       received_email=data[1]
-       received_password=data[0]
+       if data is not None:
+        received_email=data[1]
+        received_password=data[0]
       
-       if (received_email is not None and received_password==password):
-          session.clear()
-          session["user_id"] = data[2]
-          return redirect(url_for('task.dashboard'))
-       else:
-         error="Invalid Email or Password"
-     return render_template("index.html", error=error)
+        if (received_email is not None and received_password==password):
+           session.clear()
+           session["user_id"] = data[2]
+           return redirect(url_for('task.dashboard'))
+        else:
+          error="Invalid Email or Password"
+       return redirect(url_for('home'))
+ 
+     user_id = session.get("user_id") 
+     return render_template("index.html", user_id=user_id)
      """
        
        cursor= conn.cursor()
