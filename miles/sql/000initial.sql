@@ -14,7 +14,7 @@ create table task(
       
       id serial primary key,
       taskname text not null,
-      duedate date not null,
+      duedate text not null,
       overdue varchar(1),
       taskrec integer references people(id)
        

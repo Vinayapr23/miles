@@ -1,3 +1,19 @@
+
+ $(document).ready(function(){
+	$('#Mybtn2').click(function(){
+  		$('#contact-form').toggle(500);
+  		
+  });
+});
+    
+ 
+ $(document).ready(function(){
+	$('#Mybtn2').click(function(){
+  		$('#contact-form1').toggle(500);
+  		
+  });
+ });
+ 
 const initBg = (autoplay = false) => {
     const bgImgsNames = ['diagoona-bg-1.jpg', 'diagoona-bg-2.jpg', 'diagoona-bg-3.jpg'];
     const bgImgs = bgImgsNames.map(img => "static/img/"+img );
