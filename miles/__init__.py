@@ -13,8 +13,8 @@ def create_app():
    app = Flask("miles")
    
    app.config.from_mapping(
-    DATABASE="postgres://xzazucmbfvomqo:a0b4236392644438b0eed7f8756cc537ea582f7f062a2d95052009dc36e49293@ec2-54-211-160-34.compute-1.amazonaws.com:5432/dd5lqk4v8arqlg",  
-    SECRET_KEY="gtyfgiuhoiuhufuyihoh" )
+    DATABASE=os.environ.get('DATABASE_URL'),  
+    SECRET_KEY=os.environ.get('SECRET_KEY' ))
     
    from . import task 
    app.register_blueprint(task.bp)
