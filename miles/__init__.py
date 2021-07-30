@@ -12,7 +12,7 @@ from flask import flash
 def create_app():
    app = Flask("miles")
     
-   database =os.environ.get('DATABASE_URL')
+   database ="postgresql://xzazucmbfvomqo:a0b4236392644438b0eed7f8756cc537ea582f7f062a2d95052009dc36e49293@ec2-54-211-160-34.compute-1.amazonaws.com:5432/dd5lqk4v8arqlg"
    secretkey =os.environ.get('SECRET_KEY') 
    
    app.config.from_mapping(
