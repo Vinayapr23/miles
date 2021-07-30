@@ -2,14 +2,28 @@ import psycopg2
 import click 
 from flask import current_app, g
 from flask.cli import with_appcontext
+import urllib.parse as urlparse
 
 
 
 
 def get_db():
     if 'db' not in g:
-        dbname = current_app.config['DATABASE'] 
-        g.db = psycopg2.connect(f"dbname={dbname}")
+        url = urlparse.urlparse('postgres://xzazucmbfvomqo:a0b4236392644438b0eed7f8756cc537ea582f7f062a2d95052009dc36e49293@ec2-54-211-160-34.compute-1.amazonaws.com:5432/dd5lqk4v8arqlg')
+        dbname = url.path[1:]
+        user = url.username
+        password = url.password
+        host = url.hostname
+        port = url.port
+
+        g.db= psycopg2.connect(
+           dbname=dbname,
+            user=user,
+            password=password,
+            host=host,
+            port=port
+            
+            )
     return g.db
 
 

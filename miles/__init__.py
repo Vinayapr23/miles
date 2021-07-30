@@ -7,17 +7,19 @@ from flask import Blueprint
 from flask_login import LoginManager,login_user
 from flask import session
 from flask import flash
+import urllib.parse as urlparse
 
 
 def create_app():
    app = Flask("miles")
-    
-   database ="postgresql://xzazucmbfvomqo:a0b4236392644438b0eed7f8756cc537ea582f7f062a2d95052009dc36e49293@ec2-54-211-160-34.compute-1.amazonaws.com:5432/dd5lqk4v8arqlg"
-   secretkey =os.environ.get('SECRET_KEY') 
+   
    
    app.config.from_mapping(
-    DATABASE=database,  
-    SECRET_KEY=secretkey)
+        
+        SECRET_KEY="hfbefbewufewifjnwefin"
+    )
+   
+
     
    from . import task 
    app.register_blueprint(task.bp)
