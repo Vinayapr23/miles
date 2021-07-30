@@ -44,17 +44,7 @@ def create_app():
    
    @app.route("/")
    def home():
-     
-     user_id = session.get("user_id")
-
-     if user_id is None:
-        g.user = None
-     else:
-        conn = db.get_db()
-        cursor= conn.cursor()
-        cursor.execute("select * from people where id=%s",(user_id,))
-        g.user=cursor.fetchone()
-        return redirect(url_for('task.dashboard'))
+     session.clear()
      return render_template("index.html")
    
    @app.route("/login",methods=["GET","POST"])
