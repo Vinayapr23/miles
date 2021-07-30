@@ -11,10 +11,13 @@ from flask import flash
 
 def create_app():
    app = Flask("miles")
+    
+   database =os.environ.get('DATABASE_URL')
+   secretkey =os.environ.get('SECRET_KEY') 
    
    app.config.from_mapping(
-    DATABASE= os.environ.get("DATABASE_URL"),  
-    SECRET_KEY= os.environ.get("SECRET_KEY" ))
+    DATABASE=database,  
+    SECRET_KEY=secretkey)
     
    from . import task 
    app.register_blueprint(task.bp)
