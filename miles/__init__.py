@@ -13,8 +13,8 @@ def create_app():
    app = Flask("miles")
    
    app.config.from_mapping(
-    DATABASE=os.environ.get('DATABASE_URL'),  
-    SECRET_KEY=os.environ.get('SECRET_KEY' ))
+    DATABASE= os.environ.get("DATABASE_URL"),  
+    SECRET_KEY= os.environ.get("SECRET_KEY" ))
     
    from . import task 
    app.register_blueprint(task.bp)
