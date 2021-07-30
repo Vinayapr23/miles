@@ -13,7 +13,7 @@ def create_app():
    app = Flask("miles")
    
    app.config.from_mapping(
-    DATABASE="miles",  
+    DATABASE="postgres://xzazucmbfvomqo:a0b4236392644438b0eed7f8756cc537ea582f7f062a2d95052009dc36e49293@ec2-54-211-160-34.compute-1.amazonaws.com:5432/dd5lqk4v8arqlg",  
     SECRET_KEY="gtyfgiuhoiuhufuyihoh" )
     
    from . import task 
@@ -77,17 +77,7 @@ def create_app():
  
      user_id = session.get("user_id") 
      return render_template("index.html", user_id=user_id)
-     """
-       
-       cursor= conn.cursor()
-       cursor.execute("select o.email,o.password from people o where o.email=%s",(email,))
-       data = cursor.fetchone()
-       received_email=data[0]
-       received_password=data[1]
-       error_message = "Invalid Email or Password"
-      
-       login_user(email)
-       return redirect(url_for('bp.dashboard'))"""
+ 
      
      
       
